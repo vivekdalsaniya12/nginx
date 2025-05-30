@@ -1,0 +1,12 @@
+services:
+  ngincdemo:
+    build:
+      context: .
+    container_name: nginx-container
+    ports:
+      - 80:80
+    networks:
+      - facelog-network
+    restart: always
+networks:
+  facelog-network:
