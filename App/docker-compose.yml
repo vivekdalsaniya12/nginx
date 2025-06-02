@@ -1,0 +1,14 @@
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: nginx-web-container
+    ports:
+      - "80:80"
+    networks:
+      - nginx_network
+    restart: always
+networks:
+  nginx_network:
+    driver: bridge
