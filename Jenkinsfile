@@ -13,6 +13,7 @@ pipeline {
         stage('Checkout from GitHub') {
             steps {
                 codeClone("master", "https://github.com/vivekdalsaniya12/nginx.git")
+                ls
             }
         }
 
@@ -35,7 +36,7 @@ pipeline {
                     echo "Updating image to ${IMAGE_NAME}:${NEW_TAG} in ${DEPLOYMENT_FILE}"
                     // clone the repository if not already done
                     codeClone("main", "https://github.com/vivekdalsaniya12/manifests.git")
-
+                    ls
                     // Replace image tag using sed (cross-platform safe version)
                     sh """
                     sed -i.bak 's|${IMAGE_NAME}:.*|${IMAGE_NAME}:${NEW_TAG}|' ${DEPLOYMENT_FILE}
